@@ -4,7 +4,7 @@
 
 This repository contains a Dockerfile and scripts to run Hail on Amazon EMR Serverless.
 
-The `Dockerfile` is based on the amazoncorretto:8 image (Amazon Linux 2, Java 8 JDK). 
+The `Dockerfile` is based on the amazoncorretto:8 image (x86_64 architecture, Amazon Linux 2, Java 8 JDK). 
 It installs Hail and its dependencies from Hail source code, and export 3rd-party Python libraries (`pyspark_hail.tar.gz`) and Hail JAR file (`hail-all-spark.jar`).
 
 ```bash
