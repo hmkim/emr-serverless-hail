@@ -1,6 +1,6 @@
 # emr-serverless-hail
 
-**Run Hail using Amazon Emr Serverless**
+**Run Hail using Amazon EMR Serverless**
 
 This repository contains a Dockerfile and scripts to run Hail on Amazon EMR Serverless.
 
