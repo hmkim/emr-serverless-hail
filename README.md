@@ -19,7 +19,7 @@ Also, you should have a S3 bucket to store the output of Hail script.
 
 EMR serverless cluster is created with the following steps:
 
-1. Create a job runtime role as described in [**AWS EMR documentation**](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html#emr-iam-roles-create-job-role).
+1. Create a job runtime role as described in [**AWS EMR documentation**](https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/getting-started.html).
 2. Create an EMR Serverless application using the AWS CLI.
 ```bash
 aws emr-serverless create-application \
