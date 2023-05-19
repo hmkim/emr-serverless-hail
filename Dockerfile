@@ -11,7 +11,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN pip install venv-pack==0.2.0
 RUN git clone https://github.com/hail-is/hail.git /hail
 WORKDIR /hail/hail
-RUN make install-on-cluster HAIL_COMPILE_NATIVES=1 SCALA_VERSION=2.12.13 SPARK_VERSION=3.2.1
+RUN make install-on-cluster HAIL_COMPILE_NATIVES=1 SCALA_VERSION=2.12.13 SPARK_VERSION=3.3.0
 
 RUN mkdir /output && venv-pack -o /output/pyspark_hail.tar.gz
 
