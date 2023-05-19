@@ -44,7 +44,4 @@ def main():
 
 
 if __name__ == "__main__":
-    """
-    Usage: glow -a <venv_archive> -o <output_path>
-    """
     main()
