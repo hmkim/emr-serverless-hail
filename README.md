@@ -29,3 +29,19 @@ aws emr-serverless create-application \
 ```
 3. Submit a job run to your EMR Serverless application using `emr-serverless.sh` script. `entryPoint` represents the Python script that runs Hail on EMR Serverless, and `entryPointArguments` represents the arguments of this script. 
 `sparkSubmitParameters` imports the Hail JAR file and 3rd-party Python libraries from the Docker image. `applicationConfiguration` in `configuration-overrides` option is for settings of Hail, and `monitoringConfiguration` set up a log directory in S3 bucket.
+
+## Tips
+
+```
+Job failed, please check complete logs in configured logging destination. ExitCode: 1. Last few exceptions: Error summary: ConnectionPoolTimeoutException: Timeout waiting for connection from pool 
+```
+If an error above appears, I recommend a following solution.
+Set more than `100` as a value of `spark.hadoop.fs.s3.maxConnections` property (default: `15`)
+```
+"classification": "spark-defaults",
+"properties": {
+    "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+    "spark.kryo.registrator": "is.hail.kryo.HailKryoRegistrator",
+    "spark.hadoop.fs.s3.maxConnections": "1000",
+}
+```
