@@ -4,12 +4,12 @@
 
 This repository contains a Dockerfile and scripts to run Hail on Amazon EMR Serverless.
 
-The `Dockerfile` is based on the amazoncorretto:8 image (x86_64 architecture, Amazon Linux 2, Java 8 JDK). 
+The `Dockerfile` is based on the amazon linux 2023 image (x86_64 architecture, Amazon Linux 2023). 
 It installs Hail and its dependencies from Hail source code, and export 3rd-party Python libraries (`pyspark_hail.tar.gz`) and Hail JAR file (`hail-all-spark.jar`).
-The default values of hail and spark version are `0.2.100` and `3.2.1`.
+The default values of hail and spark version are `0.2.134` and `3.5.4`.
 
 ```bash
-DOCKER_BUILDKIT=1 docker build --build-arg HAIL_VERSION=<value> --build-arg SPARK_VERSION=<value> --output ./out_files .
+DOCKER_BUILDKIT=1 docker build --build-arg HAIL_VERSION=<value> --build-arg SPARK_VERSION=<value> --build-arg SCALA_VERSION=<value> --output ./out_files .
 ```
 
 `hail-script-example.py` is a Python script that runs Hail on EMR Serverless. You can modify `hail_process` function of this script to run your own Hail script.
@@ -24,7 +24,7 @@ EMR serverless cluster is created with the following steps:
 2. Create an EMR Serverless application using the AWS CLI.
 ```bash
 aws emr-serverless create-application \
-    --release-label emr-6.7.0 \
+    --release-label emr-7.8.0 \
     --type "SPARK" \
     --name my-application
 ```

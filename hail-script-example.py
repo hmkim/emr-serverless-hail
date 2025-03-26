@@ -1,8 +1,6 @@
 import sys
 import argparse
 
-
-
 def get_parser():
     parser = argparse.ArgumentParser(description='Hail Prep')
     parser.add_argument('-a', '--archives', type=str, required=True)
@@ -12,17 +10,17 @@ def get_parser():
 
 def add_venv_to_path(archive_name):
     print(f"Adding {archive_name} to sys.path")
-    sys.path.append(f"{archive_name}/lib/python3.7/site-packages")
-
+    sys.path.append(f"{archive_name}/lib/python3.9/site-packages")
+    return f"{archive_name}"
 
 def hail_process(args):
     import hail as hl
-    
+
     hl.init(
         default_reference = 'GRCh38',
         tmp_dir = args.tmp_dir,
     )
-    
+
     mt = hl.balding_nichols_model(n_populations=10,
                                 n_samples=500,
                                 n_variants=1_000_000,
@@ -39,7 +37,7 @@ def main():
     args = parser.parse_args()
 
     archive_name = args.archives
-    add_venv_to_path(archive_name)
+    added_path = add_venv_to_path(archive_name)
     hail_process(args)
 
 
